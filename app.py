@@ -7,7 +7,7 @@ app = Flask (__name__)
 app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
 db = SQLAlchemy(app)
 
-class BlogSite(db.Model):
+class Tangent(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False, unique=True)
     content = db.Column(db.Text, nullable=False)
@@ -23,7 +23,7 @@ db.session.commit()
 
 @app.route('/')
 @app.route('/home')
-@app.route('/blogsite')
+@app.route('/tangent')
 def Welcome():
     return render_template('index.html')
 
@@ -33,25 +33,25 @@ def posts():
         post_title = request.form['title']
         post_content = request.form['post']
         post_author = request.form['author']
-        new_post = BlogSite(title=post_title, content=post_content, posted_by=post_author)
+        new_post = Tangent(title=post_title, content=post_content, posted_by=post_author)
 
         db.session.add(new_post)
         db.session.commit()
         return redirect('/posts')
     else:
-        all_posts = BlogSite.query.order_by(BlogSite.posted_on).all()
+        all_posts = Tangent.query.order_by(Tangent.posted_on).all()
         return render_template('posts.html', posts=all_posts)
 
 @app.route('/posts/delete/<int:id>')
 def delete(id):
-    to_delete = BlogSite.query.get_or_404(id)
+    to_delete = Tangent.query.get_or_404(id)
     db.session.delete(to_delete)
     db.session.commit()
     return redirect('/posts')
 
 @app.route('/posts/edit/<int:id>', methods=['GET', 'POST'])
 def edit(id):
-    to_edit = BlogSite.query.get_or_404(id)
+    to_edit = Tangent.query.get_or_404(id)
     if request.method == 'POST':
         to_edit.title = request.form['title']
         to_edit.author =request.form['author']
@@ -69,7 +69,7 @@ def new_post():
         post_title = request.form['title']
         post_content = request.form['post']
         post_author = request.form['author']
-        new_post = BlogSite(title=post_title,content=post_content, posted_by=post_author)
+        new_post = Tangent(title=post_title,content=post_content, posted_by=post_author)
 
         db.session.add(new_post)
         db.session.commit()
