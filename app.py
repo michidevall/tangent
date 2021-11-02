@@ -4,7 +4,16 @@ from datetime import datetime
 
 
 app = Flask (__name__)
-app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
+# if ENV =='dev':
+    # app.debug = True
+# app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://wychojhczcvivp:69fdfc319c2ab408e3ed5ea77dd4281cf676a52151aa9ed7f2e57f590279766c@ec2-18-232-216-229.compute-1.amazonaws.com:5432/dd2m4v3ljrejpd'
+# else:
+#     app.debug = False
+#     app.config['SQLALCHEMY_DATABASE-URI'] = 'postgres://postgres://wychojhczcvivp:69fdfc319c2ab408e3ed5ea77dd4281cf676a52151aa9ed7f2e57f590279766c@ec2-18-232-216-229.compute-1.amazonaws.com:5432/dd2m4v3ljrejpd'
+
+#     app.config['SQLALCHEMY_TRACK_MOSIFICATIONS'] = False
+    
 db = SQLAlchemy(app)
 
 class Tangent(db.Model):
