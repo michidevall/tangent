@@ -16,7 +16,7 @@
     {% for post in posts%}
     <h2>{{post.title}}</h2>
     
-    {% for post.author %}
+    {% if post.author %}
     <small>Written By {{post.posted_by}} on {{post.post_on}}</small>
     {% else %}
     <small>Written By Anonymous on {{post.posted_on}}</small>
