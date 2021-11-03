@@ -18,9 +18,9 @@
     
     {% if post.author %}
     <small>Written By {{post.posted_by}} on {{post.post_on}}</small>
-    {% else %}
+    <!-- {% else %}
     <small>Written By Anonymous on {{post.posted_on}}</small>
-    {% endif %}
+    {% endif %} -->
     <p style="white-space: pre-wrap">{{post.content}}</p>
     <br>
     <a href="/posts/delete/{{post.id}}"><img
