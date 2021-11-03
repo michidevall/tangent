@@ -1,13 +1,13 @@
 {% extends 'base.html' %}   
 {% block head %}  
-    <title>All Posts</title>
+    <title>Tangents</title>
 {% endblock%}  
 
 
 {% block body %}
 <br>
     <div>
-        <h1 style="display: inline">All Posts Here:</h1>
+        <h1 style="display: inline">All Tangents:</h1>
         <a style="display: inline" class="btn btn-success float-right" href="/posts/new"> New Post</a>
     </div>
     <br>
@@ -24,8 +24,8 @@
     <p style="white-space: pre-wrap">{{post.content}}</p>
     <br>
     <a href="/posts/delete/{{post.id}}"><img
-        src="https://qph.fs.quoracdn.net/main-qimg-83c6de25ed91d13a4f09fb5f11ca8853" height="50px" width="50px"></a>
-    <a href="https://www.2g-eng.com/wp-content/uploads/2016/01/design-engineering-icon-small.png" height="50px" width="50px"></a>    
+        src="https://qph.fs.quoracdn.net/main-qimg-83c6de25ed91d13a4f09fb5f11ca8853" height="15px" width="15px"></a>
+    <a href="https://www.2g-eng.com/wp-content/uploads/2016/01/design-engineering-icon-small.png" height="15px" width="15px"></a>    
 <hr>
 {% endfor %}
 
